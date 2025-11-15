@@ -12,7 +12,6 @@
 ## Directory Structure
 - `/src/components`: Componentes reutilizáveis (Header, Footer, Logo)
 - `/src/pages`: Páginas do site (Home, Servicos, Sobre, Contato, Projetos, Politicas)
-- `/src/lib`: Configuração do Lumi SDK
 - `/public`: Assets públicos (imagens, favicons)
 
 ## Current Features
@@ -45,7 +44,7 @@ N/A - Site estático sem integração com backend
 ## Improvement Opportunities
 
 ### High Priority
-- [ ] Integrar formulário de contato com serviço de email (Lumi Email Tool ou serviço terceiro)
+- [ ] Integrar formulário de contato com serviço de email
 - [ ] Adicionar casos de sucesso/portfolio na página Projetos
 
 ### Medium Priority
