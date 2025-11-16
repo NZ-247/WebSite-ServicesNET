@@ -2,6 +2,8 @@ import React from "react"
 import {Network, Server, Box, Code, Shield, Activity, Briefcase, Globe} from 'lucide-react'
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import { Link } from "react-router-dom";
+
 
 /**
  * Serviços Page - Lista de Serviços da Empresa
@@ -112,12 +114,13 @@ const Servicos: React.FC = () => {
               <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
                 Entre em contato conosco e descubra como podemos ajudar sua empresa
               </p>
-              <a
-                href="mailto:contato@services.net.br"
+              <Link
+                to="/contato"
                 className="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all hover:scale-105"
-              >
+                >
                 Fale Conosco
-              </a>
+              </Link>
+
             </div>
           </div>
         </div>

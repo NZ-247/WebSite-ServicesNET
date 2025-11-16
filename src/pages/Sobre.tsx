@@ -2,6 +2,8 @@ import React from "react"
 import {Target, Eye, Award} from 'lucide-react'
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import { Link } from "react-router-dom";
+
 
 /**
  * Sobre Page - Informações sobre a Empresa
@@ -86,14 +88,15 @@ const Sobre: React.FC = () => {
                 Quer conhecer melhor nossas soluções?
               </h2>
               <p className="text-gray-400 mb-6">
-                Entre em contato e descubra como podemos transformar a TI da sua empresa
+                Descubra como podemos transformar a TI da sua empresa
               </p>
-              <a
-                href="mailto:contato@services.net.br"
+              <Link
+                to="/servicos"
                 className="inline-block px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all hover:scale-105"
               >
-                Fale Conosco
-              </a>
+                Ver Serviços
+              </Link>
+
             </div>
           </div>
         </div>

@@ -1,8 +1,10 @@
 import React from "react"
 import { motion } from "framer-motion"
-import {Mail} from 'lucide-react'
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import { Link } from "react-router-dom";
+import { Info } from "lucide-react";
+
 
 /**
  * Home Page - Landing Page "Em Breve"
@@ -59,7 +61,7 @@ const Home: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-xl md:text-2xl text-gray-300 mb-2"
         >
-          Estamos construindo algo <span className="text-blue-500 font-semibold">incrível</span>
+          Estamos estruturando nossa plataforma institucional. Enqunato isso conheça um pouco mais sobre nossa empresa.
         </motion.p>
 
         {/* Nome da empresa */}
@@ -73,20 +75,21 @@ const Home: React.FC = () => {
           <p className="text-lg text-blue-400">Tecnologia e Infraestrutura Inteligente</p>
         </motion.div>
 
-        {/* Botão CTA */}
+        {/* Botão */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.9 }}
         >
-          <a
-            href="mailto:contato@services.net.br"
+          <Link
+            to="/sobre"
             className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50"
-          >
-            <Mail size={20} />
-            Entre em Contato
-          </a>
+        >
+            <Info size={20} />
+            Conheça-nos
+        </Link>
         </motion.div>
+
 
         {/* Informações adicionais */}
         <motion.div
@@ -95,7 +98,7 @@ const Home: React.FC = () => {
           transition={{ duration: 1, delay: 1.2 }}
           className="mt-16 text-gray-500 text-sm"
         >
-          <p>Em breve, nosso novo site estará no ar com todas as nossas soluções em TI</p>
+          <p>Em breve, chegaremos com todas as nossas soluções em TI</p>
         </motion.div>
       </div>
     </div>
