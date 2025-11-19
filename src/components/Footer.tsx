@@ -11,8 +11,8 @@ const Footer: React.FC = () => {
 
   // EDITÁVEL: Links de redes sociais - Preencha com suas URLs
   const socialLinks = [
-    { icon: Facebook, url: "#", label: "Facebook" },
-    { icon: Instagram, url: "#", label: "Instagram" },
+    { icon: Facebook, url: "https://www.facebook.com/people/ServicesNET/61584040283574/", label: "Facebook" },
+    { icon: Instagram, url: "https://www.instagram.com/servicesnet.it/", label: "Instagram" },
     { icon: Linkedin, url: "#", label: "LinkedIn" },
     { icon: Twitter, url: "#", label: "Twitter" },
   ]
