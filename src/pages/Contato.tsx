@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import {Mail, Phone, MapPin, Send, CheckCircle, AlertCircle} from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import Header from "../components/Header"
@@ -9,26 +9,70 @@ import Footer from "../components/Footer"
  * EDITÁVEL: Modifique informações de contato e formulário
  * 
  * CONFIGURAÇÃO EMAILJS:
- * 1. Obtenha sua Public Key em: https://dashboard.emailjs.com/admin/account
- * 2. Substitua "YOUR_PUBLIC_KEY_HERE" abaixo pela sua chave
+ * 1. Configure as variáveis de ambiente no arquivo .env
+ * 2. VITE_EMAILJS_SERVICE_ID: Service ID do EmailJS
+ * 3. VITE_EMAILJS_TEMPLATE_ID: Template ID do EmailJS
+ * 4. VITE_EMAILJS_PUBLIC_KEY: Public Key do EmailJS
  */
 const Contato: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [userIP, setUserIP] = useState<string>("")
+
+  // Captura o IP do usuário ao carregar a página
+  useEffect(() => {
+    const fetchIP = async () => {
+      try {
+        const response = await fetch("https://ipv4.myexternalip.com/json")
+        const data = await response.json()
+        setUserIP(data.ip)
+      } catch (error) {
+        console.error("Erro ao capturar IP:", error)
+        setUserIP("Não disponível")
+      }
+    }
+    fetchIP()
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
+    // Captura data e hora no momento do envio
+    const now = new Date()
+    const dataHora = now.toLocaleString("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit"
+    })
+
     try {
-      // EDITÁVEL: Substitua "YOUR_PUBLIC_KEY_HERE" pela sua Public Key do EmailJS
+      // Carrega credenciais do .env
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+      // Validação de variáveis de ambiente
+      if (!serviceId || !templateId || !publicKey || publicKey === "YOUR_PUBLIC_KEY_HERE") {
+        throw new Error("Configuração do EmailJS incompleta. Verifique o arquivo .env")
+      }
+
+      // Adiciona campos extras ao formulário (IP e data/hora)
+      const formData = new FormData(formRef.current!)
+      formData.append("user_ip", userIP)
+      formData.append("submission_date", dataHora)
+
+      // Envia email via EmailJS
       await emailjs.sendForm(
-        'service_ph98cku',      // Service ID (SMTP server)
-        'template_89ss8kl',     // Template ID (Contact Us)
+        serviceId,
+        templateId,
         formRef.current!,
-        'K79p6eQqic_O5nuLb'  // ⚠️ SUBSTITUA PELA SUA PUBLIC KEY
+        publicKey
       )
       
       setSubmitStatus('success')
