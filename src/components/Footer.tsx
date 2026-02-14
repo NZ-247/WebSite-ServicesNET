@@ -36,11 +36,11 @@ const Footer: React.FC = () => {
             <div className="space-y-3">
               {/* EDITÁVEL: E-mail */}
               <a 
-                href="mailto:contato@services.net.br"
+                href="mailto:atendimento@services.net.br"
                 className="flex items-center gap-2 text-sm text-gray-400 hover:text-blue-500 transition-colors"
               >
                 <Mail size={16} />
-                contato@services.net.br
+                atendimento@services.net.br
               </a>
               
               {/* EDITÁVEL: Telefone/WhatsApp */}

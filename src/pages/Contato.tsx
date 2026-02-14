@@ -117,10 +117,10 @@ const Contato: React.FC = () => {
                   <div>
                     <h3 className="text-white font-semibold mb-1">E-mail</h3>
                     <a 
-                      href="mailto:contato@services.net.br"
+                      href="mailto:atendimento@services.net.br"
                       className="text-gray-400 hover:text-blue-500 transition-colors"
                     >
-                      contato@services.net.br
+                      atendimento@services.net.br
                     </a>
                   </div>
                 </div>
